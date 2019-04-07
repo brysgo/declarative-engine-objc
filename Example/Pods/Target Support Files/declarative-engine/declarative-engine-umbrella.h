@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "DeclarativeEngine.h"
 
 FOUNDATION_EXPORT double declarative_engineVersionNumber;
 FOUNDATION_EXPORT const unsigned char declarative_engineVersionString[];
