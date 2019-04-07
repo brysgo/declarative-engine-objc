@@ -1,0 +1,27 @@
+PODS:
+  - declarative-engine (0.1.0)
+  - Expecta (1.0.6)
+  - Specta (1.0.7)
+
+DEPENDENCIES:
+  - declarative-engine (from `../`)
+  - Expecta
+  - Specta
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Expecta
+    - Specta
+
+EXTERNAL SOURCES:
+  declarative-engine:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  declarative-engine: e1f343d3563c661c9c3ad0177965cdeb080437d0
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
+
+PODFILE CHECKSUM: 298daa50894cd970fd1713f6988a8de7e3d83256
+
+COCOAPODS: 1.5.3
