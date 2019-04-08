@@ -8,6 +8,7 @@
 
 // https://github.com/Specta/Specta
 
+#import "NSArray+Map.h"
 #import "DeclarativeEngine.h"
 
 SpecBegin(InitialSpecs)
@@ -16,15 +17,17 @@ SpecBegin(InitialSpecs)
     NSDictionary *tank = [[NSDictionary alloc]
         initWithObjectsAndKeys:
             ^(id obj) {
+              NSLog(@"Tank.oneFish");
               return [NSString stringWithFormat:@"that was really good %@",
                                                 [obj valueForKey:@"oneFish"]];
             },
             @"oneFish",
             ^(id obj) {
+              NSLog(@"Tank.twoFish");
               return [[NSDictionary alloc]
                   initWithObjectsAndKeys:
                       [NSString
-                          stringWithFormat:@"%@ %@",
+                          stringWithFormat:@"%@%@",
                                            [[obj valueForKey:@"twoFish"]
                                                valueForKey:@"arguments"][0],
                                            [[obj valueForKey:@"twoFish"]
@@ -35,6 +38,7 @@ SpecBegin(InitialSpecs)
 
 NSDictionary *fish =
     [[NSDictionary alloc] initWithObjectsAndKeys:^(id obj) {
+      NSLog(@"Fish.redFish");
       return [NSString stringWithFormat:@"that was double good %@",
                                         [obj valueForKey:@"redFish"]];
     },
@@ -42,13 +46,18 @@ NSDictionary *fish =
 
 NSDictionary *resolvers = [[NSDictionary alloc]
     initWithObjectsAndKeys:fish, @"Fish", tank, @"Tank",
-                           ^(NSDictionary *obj) {
-                             if ([obj valueForKey:@"oneFish"] != nil) {
-                               return @"Tank";
+                           ^(id obj) {
+                             if ([obj isKindOfClass:[NSDictionary class]]) {
+                               if ([obj valueForKey:@"oneFish"] != nil) {
+                                 NSLog(@"typeFromObj == Tank");
+                                 return @"Tank";
+                               }
+                               if ([obj valueForKey:@"redFish"] != nil) {
+                                 NSLog(@"typeFromObj == Fish");
+                                 return @"Fish";
+                               }
                              }
-                             if ([obj valueForKey:@"redFish"] != nil) {
-                               return @"Fish";
-                             }
+                             NSLog(@"typeFromObj == ?");
                              return @"";
                            },
                            @"typeFromObj", nil];
@@ -58,13 +67,14 @@ describe(@"simple use cases", ^{
     id (^execute)(NSDictionary *);
     execute = [DeclarativeEngine create:resolvers];
 
+    NSLog(@"starting declarative engine");
     NSDictionary *result = execute([[NSDictionary alloc]
-        initWithObjectsAndKeys:
-            @"fish food", @"oneFish",
-            [[NSDictionary alloc]
-                initWithObjectsAndKeys:@[@"food"],
-                                       @"arguments", @"!", @"redFish", nil],
-            @"twoFish", nil]);
+        initWithObjectsAndKeys:@"fish food", @"oneFish",
+                               [[NSDictionary alloc]
+                                   initWithObjectsAndKeys:@[ @"food" ],
+                                                          @"arguments", @"!",
+                                                          @"redFish", nil],
+                               @"twoFish", nil]);
 
     expect([result valueForKey:@"oneFish"])
         .to.equal(@"that was really good fish food");

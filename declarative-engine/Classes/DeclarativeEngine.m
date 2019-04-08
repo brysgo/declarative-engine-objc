@@ -10,17 +10,20 @@
 @implementation DeclarativeEngine : NSObject
 
 + (id (^)(id))create:(NSDictionary *)resolvers {
-  id (^execute)(id);
+  __block id (^execute)(id);
 
   execute = ^(id obj) {
-    NSString * (^typeFromObj)(NSDictionary *);
+    NSLog(@"running execute with %@", obj);
+    NSString * (^typeFromObj)(id);
     typeFromObj = [resolvers valueForKey:@"typeFromObj"];
     if (typeFromObj == nil || ![self isBlock:typeFromObj]) {
       [NSException
            raise:@"typeFromObj resolver is not a block"
           format:@"typeFromObj is a required resolver and must be a block"];
     }
+    NSLog(@"started getting type");
     NSString *type = typeFromObj(obj);
+    NSLog(@"finished getting type %@", type);
 
     if (type == nil || [resolvers valueForKey:type] == nil) {
       if ([obj isKindOfClass:[NSString class]] ||
@@ -45,7 +48,8 @@
 
     // TODO: add in promise support
     id result = [[NSMutableDictionary alloc] init];
-    [obj enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+    for (NSString *key in obj) {
+      NSLog(@"resolving fields %@", key);
       NSDictionary *resolverForKey = [resolvers valueForKey:type];
       if (resolverForKey == nil) {
         resolverForKey = [[NSDictionary alloc] init];
@@ -58,8 +62,11 @@
         };
       }
       NSDictionary *resolverResult = resolver(obj);
+      if (resolverResult != nil) {
+        resolverResult = execute(resolverResult);
+      }
       [result setObject:resolverResult forKey:key];
-    }];
+    }
 
     return result;
   };
