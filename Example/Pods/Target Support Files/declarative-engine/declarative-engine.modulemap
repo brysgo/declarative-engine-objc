@@ -1,6 +1,0 @@
-framework module declarative_engine {
-  umbrella header "declarative-engine-umbrella.h"
-
-  export *
-  module * { export * }
-}

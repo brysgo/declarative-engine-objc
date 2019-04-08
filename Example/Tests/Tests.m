@@ -8,8 +8,7 @@
 
 // https://github.com/Specta/Specta
 
-#import "NSArray+Map.h"
-#import "DeclarativeEngine.h"
+#import <DeclarativeEngine/DEDeclarativeEngine.h>
 
 SpecBegin(InitialSpecs)
 
@@ -65,7 +64,7 @@ NSDictionary *resolvers = [[NSDictionary alloc]
 describe(@"simple use cases", ^{
   it(@"works as expected", ^{
     id (^execute)(NSDictionary *);
-    execute = [DeclarativeEngine create:resolvers];
+    execute = [DEDeclarativeEngine create:resolvers];
 
     NSLog(@"starting declarative engine");
     NSDictionary *result = execute([[NSDictionary alloc]

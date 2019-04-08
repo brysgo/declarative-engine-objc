@@ -1,10 +1,10 @@
 PODS:
-  - declarative-engine (0.1.0)
+  - DeclarativeEngine (0.1.0)
   - Expecta (1.0.6)
   - Specta (1.0.7)
 
 DEPENDENCIES:
-  - declarative-engine (from `../`)
+  - DeclarativeEngine (from `../`)
   - Expecta
   - Specta
 
@@ -14,14 +14,14 @@ SPEC REPOS:
     - Specta
 
 EXTERNAL SOURCES:
-  declarative-engine:
+  DeclarativeEngine:
     :path: "../"
 
 SPEC CHECKSUMS:
-  declarative-engine: e1f343d3563c661c9c3ad0177965cdeb080437d0
+  DeclarativeEngine: fe5f5b49c250e69913c0fa2c57baccdc296b96b3
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 298daa50894cd970fd1713f6988a8de7e3d83256
+PODFILE CHECKSUM: e29514ce9ae6895996cf7914499d592bc85d80dc
 
 COCOAPODS: 1.5.3

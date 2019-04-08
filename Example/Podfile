@@ -2,10 +2,10 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-target 'declarative-engine_Example' do
-  pod 'declarative-engine', :path => '../'
+target 'DeclarativeEngine_Example' do
+  pod 'DeclarativeEngine', :path => '../'
 
-  target 'declarative-engine_Tests' do
+  target 'DeclarativeEngine_Tests' do
     inherit! :search_paths
 
     pod 'Specta'
