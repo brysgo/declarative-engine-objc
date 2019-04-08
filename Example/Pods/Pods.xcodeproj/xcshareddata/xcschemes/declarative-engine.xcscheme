@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8995B3DB5175F876DE7F517533BDDF9C"
+               BlueprintIdentifier = "39DD461433735E3CD30286C360B37305"
                BuildableName = "declarative_engine.framework"
                BlueprintName = "declarative-engine"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8995B3DB5175F876DE7F517533BDDF9C"
+            BlueprintIdentifier = "39DD461433735E3CD30286C360B37305"
             BuildableName = "declarative_engine.framework"
             BlueprintName = "declarative-engine"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8995B3DB5175F876DE7F517533BDDF9C"
+            BlueprintIdentifier = "39DD461433735E3CD30286C360B37305"
             BuildableName = "declarative_engine.framework"
             BlueprintName = "declarative-engine"
             ReferencedContainer = "container:Pods.xcodeproj">
