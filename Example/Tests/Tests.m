@@ -16,7 +16,7 @@ SpecBegin(InitialSpecs)
     NSDictionary *tank = [[NSDictionary alloc]
         initWithObjectsAndKeys:
             ^(id obj) {
-              return [NSString stringWithFormat:@"that was a really good %@",
+              return [NSString stringWithFormat:@"that was really good %@",
                                                 [obj valueForKey:@"oneFish"]];
             },
             @"oneFish",
@@ -41,17 +41,30 @@ NSDictionary *fish =
                                                  @"redFish", nil];
 
 NSDictionary *resolvers = [[NSDictionary alloc]
-    initWithObjectsAndKeys:fish, @"Fish", tank, @"Tank", nil];
+    initWithObjectsAndKeys:fish, @"Fish", tank, @"Tank",
+                           ^(NSDictionary *obj) {
+                             if ([obj valueForKey:@"oneFish"] != nil) {
+                               return @"Tank";
+                             }
+                             if ([obj valueForKey:@"redFish"] != nil) {
+                               return @"Fish";
+                             }
+                             return @"";
+                           },
+                           @"typeFromObj", nil];
 
 describe(@"simple use cases", ^{
   it(@"works as expected", ^{
     id (^execute)(NSDictionary *);
     execute = [DeclarativeEngine create:resolvers];
 
-    NSDictionary *result = execute(
-       [[NSDictionary alloc] initWithObjectsAndKeys: @"fish food", @"oneFish", nil] 
-    );
-      // twoFish : {arguments : ["food"], redFish : "!"}
+    NSDictionary *result = execute([[NSDictionary alloc]
+        initWithObjectsAndKeys:
+            @"fish food", @"oneFish",
+            [[NSDictionary alloc]
+                initWithObjectsAndKeys:@[@"food"],
+                                       @"arguments", @"!", @"redFish", nil],
+            @"twoFish", nil]);
 
     expect([result valueForKey:@"oneFish"])
         .to.equal(@"that was really good fish food");
@@ -59,19 +72,19 @@ describe(@"simple use cases", ^{
         .to.equal(@"that was double good food!");
   });
 
-  it(@"can do maths", ^{
-    expect(1).beLessThan(23);
-  });
+  //   it(@"can do maths", ^{
+  //     expect(1).beLessThan(23);
+  //   });
 
-  it(@"can read", ^{
-    expect(@"team").toNot.contain(@"I");
-  });
+  //   it(@"can read", ^{
+  //     expect(@"team").toNot.contain(@"I");
+  //   });
 
-  it(@"will wait and succeed", ^{
-    waitUntil(^(DoneCallback done) {
-      done();
-    });
-  });
+  //   it(@"will wait and succeed", ^{
+  //     waitUntil(^(DoneCallback done) {
+  //       done();
+  //     });
+  //   });
 });
 
 SpecEnd

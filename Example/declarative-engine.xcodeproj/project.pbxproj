@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		8C72E3A9225ADC7F00858A19 /* declarative_engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C72E3A8225ADC7F00858A19 /* declarative_engine.framework */; };
 		FFF92D02C9F763FD9ADE267F /* Pods_declarative_engine_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD6C6C09821B51578DC0E69 /* Pods_declarative_engine_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8C72E3A8225ADC7F00858A19 /* declarative_engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = declarative_engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A561B117F3A5E686BCEE2AA /* Pods-declarative-engine_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-declarative-engine_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-declarative-engine_Tests/Pods-declarative-engine_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9ACF64FC931FC65E74CB8602 /* Pods_declarative_engine_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_declarative_engine_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F576A4660ACBB79AE5F249A2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C72E3A9225ADC7F00858A19 /* declarative_engine.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -130,6 +133,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C72E3A8225ADC7F00858A19 /* declarative_engine.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
@@ -491,7 +495,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
