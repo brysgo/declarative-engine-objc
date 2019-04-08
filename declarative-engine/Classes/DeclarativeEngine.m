@@ -9,7 +9,7 @@
 
 @implementation DeclarativeEngine : NSObject
 
-- (id (^)(NSDictionary *))create:(NSDictionary *)resolvers {
++ (id (^)(NSDictionary *))create:(NSDictionary *)resolvers {
   id (^execute)(NSDictionary *);
 
   execute = ^(id obj) {
@@ -61,7 +61,7 @@
   return execute;
 }
 
-- (BOOL)isBlock:(id)item {
++ (BOOL)isBlock:(id)item {
   id block = ^{
   };
   Class blockClass = [block class];

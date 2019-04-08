@@ -6,6 +6,6 @@
 
 @interface DeclarativeEngine : NSObject
 
-- (id (^)(NSDictionary *))create:(NSDictionary *)resolvers;
++ (id (^)(NSDictionary *))create:(NSDictionary *)resolvers;
 
 @end

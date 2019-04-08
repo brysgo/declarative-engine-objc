@@ -11,6 +11,7 @@
 #endif
 
 #import "DeclarativeEngine.h"
+#import "NSArray+Map.h"
 
 FOUNDATION_EXPORT double declarative_engineVersionNumber;
 FOUNDATION_EXPORT const unsigned char declarative_engineVersionString[];
